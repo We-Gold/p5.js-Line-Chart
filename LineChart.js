@@ -97,15 +97,14 @@ function LineChart(data, colors, lineLabels, w, h, x, y, xRange, yRange) {
     }
     
     let startX = this.chartX + (this.chartW - this.padding - totalWidth)/2 
-        
+    
+    let startTracker = 0
+    
     // Draw the line labels
     for (let i = 0; i < this.lineLabels.length; i++) {
       fill(this.colors[i])
-      let prevLen = 0
-      if (i > 0) {
-        prevLen = textWidth(this.lineLabels[i - 1]) + textPadding
-      }
-      text(this.lineLabels[i], startX + prevLen, this.chartY - 3)
+      text(this.lineLabels[i], startX + startTracker, this.chartY - 3)
+      startTracker += textWidth(this.lineLabels[i]) + textPadding
     }
     pop()
   }
